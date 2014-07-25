@@ -1,0 +1,89 @@
+.banner {
+	background-color: darken($light-blue, 10%);
+	background-image: url(../img/banner-texture.png);
+	height: 450px;
+	position: relative;
+	&:before {
+		content:" ";
+		background-image: url(../img/mountain-bg.png);
+		bottom:0;
+		height: 50px;
+		position: absolute;
+		width: 100%;
+	}
+	.banner-wrapper {
+		display: table;
+		height: 100%;
+		width: 100%;
+	}
+	.banner-body {
+		display: table-cell;
+		opacity: 1;
+		position: relative;
+		text-align: center;
+		top: 0px;
+		vertical-align: middle;
+		z-index: 5;
+		-webkit-animation: intro 1s 1 ease-out;
+		-moz-animation: intro 1s 1 ease-out;
+		-o-animation: intro 1s 1 ease-out;
+		//position: fixed;
+		//top: 100px;
+		//width: 100%;
+		.banner-body-text {
+			color: #fff;
+			font-size: 3em;
+			font-weight: 700;
+			line-height: 1.2em;
+			margin: 0 auto 20px auto;
+			max-width: 750px;
+			text-transform: uppercase;
+			 @include text-shadow(0 1px 2px #999);
+		}
+	}
+	.banner-mountains {
+		bottom: 0;
+		position: absolute;
+		height: 150px;
+		width: 100%;
+		z-index: 10;
+	}
+	.banner-clouds {
+		bottom: -15px;
+	  	position: absolute;
+	  	height:125px;
+	  	left: 50%;
+	  	opacity: .5;
+	  	width:125px;
+	  	z-index: 0;
+	  	-webkit-animation: moveclouds 100s  ease-out infinite;
+		-moz-animation: moveclouds 100s  ease-out infinite;
+		-o-animation: moveclouds 100s ease-out infinite;
+	}
+}
+@-webkit-keyframes moveclouds {
+	0% { margin-left: 0px; }
+	50% { margin-left:-300px; }
+	100% { margin-left: 0px; }
+}
+@-moz-keyframes moveclouds {
+	0% { margin-left: 0px; }
+	50% { margin-left:-300px; }
+	100% { margin-left: 0px; }
+}
+@-o-keyframes moveclouds {
+	0% { margin-left: 0px; }
+	50% { margin-left:-300px; }
+	100% { margin-left: 0px; }
+}
+
+@-webkit-keyframes intro {
+	0% { 
+		opacity: 0;
+		top: 100px;
+	}
+	100% { 
+		opacity: 1;
+		top: 0;
+	}
+}

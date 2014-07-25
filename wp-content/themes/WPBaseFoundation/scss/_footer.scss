@@ -1,0 +1,26 @@
+.footer {
+	color: $dark-gray;
+	padding-top: 20px;
+	text-align: center;
+	.footer-social {
+		svg { 
+			height: 50px;
+			width: 50px;
+		}
+		li { 
+			display: inline;
+			margin-right:15px;
+			a {
+				&:hover {
+					.footer-social-link {
+						 fill: darken($primary-blue, 15%); 
+					}
+				}
+			}
+		}
+	}
+	.footer-copy p{
+		font-size: .7em;
+	}
+}
+

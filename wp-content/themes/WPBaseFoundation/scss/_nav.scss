@@ -1,0 +1,57 @@
+.header {
+	border-bottom: 1px solid transparent;
+	padding: 15px;
+	position: fixed;
+	width: 100%;
+	z-index: 50;
+	@include transition-duration(.3s);
+	&.visible, &:hover {
+		background: #fff;
+		border-bottom: 1px solid #eee;
+		@include transition-duration(.3s);
+	}
+	.logo {
+		float: left;
+		a {
+			font-size: 1.8em;
+			font-weight: 300;
+			&:hover {
+				.stroke {
+					stroke: #aaa;
+				}
+				.logo-title {
+					color: #aaa;
+				}
+			}
+			.logo-icon {
+				float: left;
+				height:40px;
+				margin-right: 5px;
+				width: 40px;
+			}
+			.logo-title {
+				color: $dark-gray;
+				position: relative;
+				top: 8px;
+			}
+		}
+	}
+	.menu {
+		margin: 10px 0 0 0;
+		text-align: right;
+		.menu-item {
+			display: inline;
+			margin-left: 3em;
+			a {
+				color: $dark-gray;
+				font-size: 1.1em;
+				font-weight: 600;
+				text-transform: uppercase;
+				&:hover {
+					color: darken($primary-blue, 15%);
+				}
+			}
+		}
+	}
+}
+

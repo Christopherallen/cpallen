@@ -1,0 +1,38 @@
+* {
+	font-family: "proxima-nova",sans-serif;
+}
+body {
+	background-color: $darker-gray;
+}
+h1 { 
+	font-weight: 700;
+	font-family: "proxima-nova",sans-serif;
+
+}
+h2, h3, h4, h5, h6 {
+	font-weight: 500;
+	font-family: "proxima-nova",sans-serif;
+}
+a {
+	color: $darker-gray;
+	@include transition-duration(.3s);
+	&:hover {
+		color: $primary-blue;
+		@include transition-duration(.3s);
+	}
+}
+.content {
+	background-color: #fff;
+	min-height: 300px;
+	padding-top: 30px;
+	position: relative;
+	z-index: 15;
+}
+.block-title {
+	color: $dark-gray;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+
