@@ -1,3 +1,19 @@
+.inner-wrap {
+  @include transition (left 200ms ease);
+}
+.move-left .inner-wrap {
+  left: -250px;
+  @include transform(none);
+}
+.right-off-canvas-menu {
+  position: fixed;
+  right: -250px;
+  @include transform(none);
+  @include transition (right 200ms ease);
+}
+.move-left .right-off-canvas-menu {
+  right: 0px;
+}
 .header {
 	border-bottom: 1px solid transparent;
 	padding: 15px;
@@ -7,18 +23,17 @@
 	@include transition-duration(.3s);
 	&.visible, &:hover {
 		background: #fff;
-		border-bottom: 1px solid #eee;
+		border-bottom: 1px solid #ccc;
 		@include transition-duration(.3s);
+		.stroke {
+			stroke: darken($primary-blue, 15%);
+		}
 	}
 	.logo {
 		float: left;
 		a {
 			font-size: 1.8em;
-			font-weight: 300;
 			&:hover {
-				.stroke {
-					stroke: #aaa;
-				}
 				.logo-title {
 					color: #aaa;
 				}
@@ -36,20 +51,42 @@
 			}
 		}
 	}
+	.nav-desktop {
+		@media(max-width:767px) {
+			display: none;
+		}
+		.menu {
+			margin: 10px 0 0 0;
+			text-align: right;
+			.menu-item {
+				display: inline;
+				margin-left: 3em;
+			}
+		}
+	}
+	.nav-mobile {
+		@media(min-width:768px) {
+			display: none;
+		}
+		.nav-svg { 
+			bottom: 5px;
+			fill: $dark-gray;
+			float: right;
+			position: relative;
+		}
+		.menu {
+			list-style: none;
+			padding: 15px;
+		}
+	}
 	.menu {
-		margin: 10px 0 0 0;
-		text-align: right;
-		.menu-item {
-			display: inline;
-			margin-left: 3em;
-			a {
-				color: $dark-gray;
-				font-size: 1.1em;
-				font-weight: 600;
-				text-transform: uppercase;
-				&:hover {
-					color: darken($primary-blue, 15%);
-				}
+		a {
+			color: $dark-gray;
+			font-size: 1.1em;
+			font-weight: 600;
+			text-transform: uppercase;
+			&:hover {
+				color: darken($primary-blue, 15%);
 			}
 		}
 	}

@@ -6,7 +6,7 @@
      foreach ($postslist as $post) :
 	setup_postdata($post);
      ?>
-     <div class="entry">
+    <div class="entry">
 	 <span class="post-thumbnail"><?php the_post_thumbnail('thumbnail');?></span>
 	 <h2 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 	 <h3 class="post-date"> <?php the_time(get_option('date_format')) ?></h3>

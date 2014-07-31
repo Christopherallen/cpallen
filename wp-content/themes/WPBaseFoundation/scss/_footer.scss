@@ -23,4 +23,18 @@
 		font-size: .7em;
 	}
 }
+.footer-upper {
+	background-color: $light-gray;
+	.footer-upper-action {
+		padding: 20px 0;
+		text-align: center;
+	}
+	.footer-upper-contact {
+		display: none;
+		height: 300px;
+		&.open {
+			display: block;
+		}
+	}
+}
 

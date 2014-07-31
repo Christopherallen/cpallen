@@ -2,6 +2,7 @@
 	font-family: "proxima-nova",sans-serif;
 }
 body {
+	color: $dark-gray;
 	background-color: $darker-gray;
 }
 h1 { 
@@ -10,9 +11,11 @@ h1 {
 
 }
 h2, h3, h4, h5, h6 {
+	color: $dark-gray;
 	font-weight: 500;
 	font-family: "proxima-nova",sans-serif;
 }
+p { color: $dark-gray; }
 a {
 	color: $darker-gray;
 	@include transition-duration(.3s);
@@ -24,6 +27,8 @@ a {
 .content {
 	background-color: #fff;
 	min-height: 300px;
+	overflow: hidden;
+	padding-bottom: 30px;
 	padding-top: 30px;
 	position: relative;
 	z-index: 15;
@@ -31,6 +36,7 @@ a {
 .block-title {
 	color: $dark-gray;
 	font-weight: 600;
+	padding: 30px 0;
 	text-align: center;
 	text-transform: uppercase;
 }

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<div class="row">
-    <div class="content">
+<div class="content">
+    <div class="row">
         <?php 
         if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
             the_post_thumbnail('featured');
@@ -18,8 +18,8 @@
     </div>
 </div>  
 
-<div class="row">
+<!--div class="row">
     <?php get_sidebar(); ?>
-</div>
+</div-->
 
 <?php get_footer(); ?> 

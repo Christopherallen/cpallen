@@ -1,8 +1,15 @@
 .banner {
-	background-color: darken($light-blue, 10%);
-	background-image: url(../img/banner-texture.png);
+	@include background-image(linear-gradient($light-blue, darken($light-blue, 10%)));
+	//background-color: darken($light-blue, 10%);
+	//background-image: url(../img/banner-texture.png);
 	height: 450px;
+	overflow: hidden;
 	position: relative;
+	@media(max-width:767px) {
+		height: 350px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 	&:before {
 		content:" ";
 		background-image: url(../img/mountain-bg.png);
@@ -19,14 +26,12 @@
 	.banner-body {
 		display: table-cell;
 		opacity: 1;
+		padding-top: 20px;
 		position: relative;
 		text-align: center;
 		top: 0px;
 		vertical-align: middle;
 		z-index: 5;
-		-webkit-animation: intro 1s 1 ease-out;
-		-moz-animation: intro 1s 1 ease-out;
-		-o-animation: intro 1s 1 ease-out;
 		//position: fixed;
 		//top: 100px;
 		//width: 100%;
@@ -37,16 +42,33 @@
 			line-height: 1.2em;
 			margin: 0 auto 20px auto;
 			max-width: 750px;
+			position: relative;
 			text-transform: uppercase;
-			 @include text-shadow(0 1px 2px #999);
+			@include text-shadow(0 1px 2px #999);
+			@include transition(.3s);
+			-webkit-animation: text-opac 1s ease-out;
+			-moz-animation: text-opac 1s 1 ease-out;
+			-o-animation: text-opac 1s 1 ease-out;
+			@media(max-width:767px) {
+				font-size: 1.7em;
+			}
+		}
+	 	.button {
+			-webkit-animation: intro 1.5s 1 ease-out;
+			-moz-animation: intro 1.5s 1 ease-out;
+			-o-animation: intro 1.5s 1 ease-out;
 		}
 	}
 	.banner-mountains {
 		bottom: 0;
 		position: absolute;
-		height: 150px;
+		height: 120px;
+		left: 0;
 		width: 100%;
 		z-index: 10;
+		@media(max-width:767px) {
+			height: 85px;
+		}
 	}
 	.banner-clouds {
 		bottom: -15px;
@@ -61,29 +83,57 @@
 		-o-animation: moveclouds 100s ease-out infinite;
 	}
 }
-@-webkit-keyframes moveclouds {
-	0% { margin-left: 0px; }
-	50% { margin-left:-300px; }
-	100% { margin-left: 0px; }
-}
-@-moz-keyframes moveclouds {
-	0% { margin-left: 0px; }
-	50% { margin-left:-300px; }
-	100% { margin-left: 0px; }
-}
-@-o-keyframes moveclouds {
-	0% { margin-left: 0px; }
-	50% { margin-left:-300px; }
-	100% { margin-left: 0px; }
-}
-
-@-webkit-keyframes intro {
-	0% { 
-		opacity: 0;
-		top: 100px;
-	}
-	100% { 
-		opacity: 1;
-		top: 0;
+.list-item {
+	&.featured {
+		background-color: $light-gray;
+		margin-bottom: 50px;
+		overflow:hidden;
+		padding: 30px 0;
+		&:nth-child(odd)  {
+			.media-object {
+				float: right;
+			}
+		}
+		.media-object {
+			height: 100px;
+			position: relative;
+			top: 100px;
+			@media(max-width:979px) {
+				height: auto;
+				top: 0;
+			}
+			&.slideUp {
+				-webkit-animation: slideUp 2s ease-out;
+				-moz-animation: slideUp 2s 1 ease-out;
+				-o-animation: slideUp 2s 1 ease-out;
+			}
+			&:before {
+				//background-image: url(../img/browser-chrome.png);
+				background-size: 100%;
+				//content:" ";
+				height: 400px;
+				position: absolute;
+				right: -23px;
+				top: -22px;
+				width: 547px;
+			}
+		}
+		.list-item-title {
+			margin-bottom: 20px;
+			a {
+				color: #fff;
+				text-transform: uppercase;
+			}
+			&:before {
+				border: 2px solid $dark-gray;
+				content: " ";
+				position:absolute;
+				top: 40px;
+				width: 20px;
+				@media(max-width:767px) {
+					top: 30px;
+				}
+			}
+		}
 	}
 }
