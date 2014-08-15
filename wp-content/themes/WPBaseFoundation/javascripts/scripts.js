@@ -129,4 +129,3 @@ if (document.documentElement.clientWidth > 979) {
 	    });
 	});
 }
-

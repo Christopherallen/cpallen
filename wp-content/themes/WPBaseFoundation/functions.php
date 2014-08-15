@@ -9,7 +9,6 @@ function require_scripts() {
     wp_register_script('jquery2', get_template_directory_uri() . '/javascripts/vendor/jquery.js', true ); 
     wp_register_script('modernizr', get_template_directory_uri() . '/javascripts/vendor/modernizr.js', true );   
     wp_register_script('foundation', get_template_directory_uri() . '/javascripts/foundation/foundation.min.js', true ); 
-    wp_register_script('offcanvas', get_template_directory_uri() . '/javascripts/foundation/foundation.offcanvas.js', true ); 
     wp_register_script('mean-menu', get_template_directory_uri() . '/javascripts/mean-menu/jquery.meanmenu.2.0.min.js', true );
     wp_register_script('scripts', get_template_directory_uri() . '/javascripts/scripts.js', true );
     wp_enqueue_script( 'stylesheet' );  
@@ -17,7 +16,6 @@ function require_scripts() {
     wp_enqueue_script( 'jquery2' ); 
     wp_enqueue_script( 'modernizr' );   
     wp_enqueue_script( 'foundation' );
-    wp_enqueue_script( 'offcanvas' );  
     wp_enqueue_script( 'mean-menu' );
     wp_enqueue_script( 'scripts' );
 
@@ -78,13 +76,12 @@ add_theme_support( 'post-thumbnails' );
 
 //ADDITIONAL FEATURES! Handy little things I use.
 
-/***************************************************** 
 
 //Adding Custom Image Sizes. Uncomment code to use.
 
-add_image_size('featured', 1024, 350 , true);
+//add_image_size('featured', 1024, 350 , true);
+add_image_size('work', 900, 300, crop );
 
-*****************************************************/
 
 
 /***************************************************** 

@@ -3,20 +3,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<meta name="application-name" content="<?php bloginfo('name'); ?>" />
-	<title><?php bloginfo("name"); ?> <?php wp_title("&bull;"); ?></title>
+	<title><?php if(!is_page('Home')){ ?><?php wp_title(''); ?> |  <?php bloginfo("name"); ?><?php } ?><?php if(is_page('Home')){ ?><?php bloginfo("name"); ?> | Web Developer + Designer <?php } ?></title>
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<?php wp_head(); ?>
 	<script type="text/javascript" src="//use.typekit.net/cvs4mot.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
-<div class="off-canvas-wrap" data-offcanvas>
-<div class="inner-wrap">
 <div class="header">
 	<div class="row">
 		<div class="logo">
 			<a href="<?php echo home_url(); ?>">
-				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+				<!--!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 				<svg class="logo-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
 				<polyline class="stroke" fill="none" stroke="#666766" stroke-width="5" stroke-miterlimit="10" points="31.768,45.604 38.417,55.73 46.019,45.604 
@@ -24,56 +22,66 @@
 				<polygon class="stroke" fill="none" stroke="#666766" stroke-width="8" stroke-miterlimit="10" points="8.605,86.877 90.962,86.877 49.784,13.5 
 					34.868,40.079 "/>
 				<path stroke="#FFFFFF" stroke-miterlimit="10" d="M51.784,43.752"/>
-				</svg>
+				</svg-->
 				<span class="logo-title">Chris Allen</span>
 			</a>
 		</div>
-		<nav class="nav-desktop">
+		<a class="nav-mobile-toggle" href="javascript:void(0)" >
+			<svg class="nav-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 		width="40px" height="45px" viewBox="0 0 32 22.5" enable-background="new 0 0 32 22.5" xml:space="preserve">
+					<title>Mobile Menu</title>
+					<g class="svg-menu-toggle">
+
+					<path class="bar" d="M20.945,8.75c0,0.69-0.5,1.25-1.117,1.25H3.141c-0.617,0-1.118-0.56-1.118-1.25l0,0
+						c0-0.69,0.5-1.25,1.118-1.25h16.688C20.445,7.5,20.945,8.06,20.945,8.75L20.945,8.75z">
+					</path>
+					<path class="bar" d="M20.923,15c0,0.689-0.501,1.25-1.118,1.25H3.118C2.5,16.25,2,15.689,2,15l0,0c0-0.689,0.5-1.25,1.118-1.25 h16.687C20.422,13.75,20.923,14.311,20.923,15L20.923,15z">
+					</path>
+					<path class="bar" d="M20.969,21.25c0,0.689-0.5,1.25-1.117,1.25H3.164c-0.617,0-1.118-0.561-1.118-1.25l0,0
+						c0-0.689,0.5-1.25,1.118-1.25h16.688C20.469,20,20.969,20.561,20.969,21.25L20.969,21.25z">
+					</path>
+					<!-- needs to be here as a 'hit area' -->
+          			<rect width="320" height="220" fill="none">
+
+					</rect>
+					</g>
+
+			</svg>
+		</a>
+		<nav class="nav">
 			<div>
 				<?php wp_nav_menu( array('menu' => 'Main Menu' )); ?> 
 			</div>
-		</nav>
-		<nav class="nav-mobile">
-			<a class="right-off-canvas-toggle nav-btn" href="#" >
-				<svg class="nav-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-		 		width="40px" height="45px" viewBox="0 0 32 22.5" enable-background="new 0 0 32 22.5" xml:space="preserve">
-						<title>Mobile Menu</title>
-						<g class="svg-menu-toggle">
-
-						<path class="bar" d="M20.945,8.75c0,0.69-0.5,1.25-1.117,1.25H3.141c-0.617,0-1.118-0.56-1.118-1.25l0,0
-							c0-0.69,0.5-1.25,1.118-1.25h16.688C20.445,7.5,20.945,8.06,20.945,8.75L20.945,8.75z">
-						</path>
-						<path class="bar" d="M20.923,15c0,0.689-0.501,1.25-1.118,1.25H3.118C2.5,16.25,2,15.689,2,15l0,0c0-0.689,0.5-1.25,1.118-1.25 h16.687C20.422,13.75,20.923,14.311,20.923,15L20.923,15z">
-						</path>
-						<path class="bar" d="M20.969,21.25c0,0.689-0.5,1.25-1.117,1.25H3.164c-0.617,0-1.118-0.561-1.118-1.25l0,0
-							c0-0.689,0.5-1.25,1.118-1.25h16.688C20.469,20,20.969,20.561,20.969,21.25L20.969,21.25z">
-						</path>
-						<!-- needs to be here as a 'hit area' -->
-	          	<rect width="320" height="220" fill="none">
-
-						</rect>
-						</g>
-
-				</svg>
-			</a>
-			<aside class="right-off-canvas-menu">
-				<?php wp_nav_menu( array('menu' => 'Main Menu' )); ?> 
-			</aside>
 		</nav>	
 	</div>
 </div>
 
 <body <?php body_class(); ?>>
-	<?php if(is_page('Home')){ ?>
-	<div class="banner">
+	<?php $hex = get_post_meta( get_the_ID(), 'cpa_post_class', true ); ?>
+	<?php if(is_page('Home') || is_single() ){ ?>
+	<div class="banner <?php if(is_page('Home')){ ?>large<?php } ?><?php if(!is_page('Home') && !is_single() ){ ?>small<?php } if(is_single() ){ ?>Medium<?php } ?>" <?php if(is_single() ) { ?>style="background-color: #<?php echo $hex; ?>; background-image:none;"<?php } ?>>
 		<div class="banner-wrapper">
-		<div class="banner-body">
-			<h2 class="banner-body-text">I craft digital experiences in the pacific northwest</h2>
-			<div class="banner-body-button">
-				<a href="work" class="button large">View Work</a>
+			<div class="banner-body">
+				<?php
+				if(is_single() ) {
+			        if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+			            the_post_thumbnail('featured');
+			        }  
+			    }         
+        		?>
+				<?php if(is_page('Home')){ ?>
+					<h2 class="banner-body-text"><span class="banner-body-text-small">I craft</span> digital experiences <span class="banner-body-text-small">in the pacific northwest</span></h2>
+					<div class="banner-body-button">
+						<a href="work" class="button secondary large">View Work</a>
+					</div>
+				<?php } ?>
+				<?php if(!is_page('Home') && !is_single() ){ ?>
+					<h2 class="banner-body-text"><?php the_title(); ?></h2>
+				<?php } ?>
 			</div>
 		</div>
-		</div>
+	<?php } ?>
+		<?php if(is_page('Home')){ ?>
 			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 			<svg class="banner-mountains" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				 viewBox="0 0 400 100" enable-background="new 0 0 400 100" xml:space="preserve">
@@ -129,5 +137,12 @@
 			<ellipse fill="#FFFFFF" cx="210.425" cy="37.987" rx="86.611" ry="30.833"/>
 			<ellipse fill="#FFFFFF" cx="271.386" cy="61.667" rx="86.611" ry="30.833"/>
 			</svg>	
+			<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+			<svg  class="banner-clouds-2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				 viewBox="0 0 400 100" enable-background="new 0 0 400 100" xml:space="preserve">
+			<ellipse fill="#FFFFFF" cx="132.009" cy="61.667" rx="86.611" ry="30.833"/>
+			<ellipse fill="#FFFFFF" cx="210.425" cy="37.987" rx="86.611" ry="30.833"/>
+			<ellipse fill="#FFFFFF" cx="271.386" cy="61.667" rx="86.611" ry="30.833"/>
+			</svg>	
+		<?php } ?>
 	</div>
-	<?php } ?>

@@ -15,7 +15,7 @@
 	<div class="footer-social">
 		<ul>
 			<li>
-				<a href="">
+				<a href="https://github.com/Christopherallen" target="_blank">
 				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					 viewBox="0 0 12 12" enable-background="new 0 0 12 12" xml:space="preserve">
@@ -34,7 +34,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="">
+				<a href="https://twitter.com/chrispaulallen" target="_blank">
 				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					 viewBox="0 0 11 12" enable-background="new 0 0 11 12" xml:space="preserve">
@@ -51,7 +51,7 @@
 				</a>	
 			</li>
 			<li>
-				<a href="">
+				<a href="https://www.linkedin.com/profile/view?id=183690620&trk=spm_pic" target="_blank">
 				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					 viewBox="0 0 12 12" enable-background="new 0 0 12 12" xml:space="preserve">
@@ -67,7 +67,7 @@
 				</a>	
 			</li>
 			<li>
-				<a href="">
+				<a href="mailto:chris@cpallen.com" target="_blank">
 				<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					 viewBox="0 0 12 12" enable-background="new 0 0 12 12" xml:space="preserve">
@@ -86,14 +86,17 @@
 		<p class="copywrite"><?php echo date('Y');?> &copy; Chris Allen All Rights Reserved</p>
 	</div>
 </footer> 
-<a class="exit-off-canvas"></a>
-</div> <!-- inner-wrap -->
-</div>	<!-- off-canvas-wrap -->
 <script type="text/javascript">
     $(document).foundation();
 
 	$( ".footer-upper-action a" ).click(function() {
 	  $( '.footer-upper-contact' ).slideToggle( "fast" );
+	});
+
+	$( ".nav-mobile-toggle").click(function() {
+		$( ".nav" ).slideToggle( 300 );
+		$( ".nav" ).toggleClass( "nav-open" );
+		$( ".header" ).toggleClass( "nav-open" );
 	});
 </script>
 

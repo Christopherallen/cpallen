@@ -2,6 +2,10 @@
 
 
 <div class="content">
+    <div class="sub-header">
+        <h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+    </div>
+
     <div class="row">
         <?php 
         if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
@@ -11,7 +15,6 @@
     
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     
-        <h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
         <?php the_content(); ?>
         

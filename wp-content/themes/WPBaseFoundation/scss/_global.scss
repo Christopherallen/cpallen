@@ -17,7 +17,7 @@ h2, h3, h4, h5, h6 {
 }
 p { color: $dark-gray; }
 a {
-	color: $darker-gray;
+	color: darken($primary-blue, 10%);
 	@include transition-duration(.3s);
 	&:hover {
 		color: $primary-blue;
@@ -29,16 +29,35 @@ a {
 	min-height: 300px;
 	overflow: hidden;
 	padding-bottom: 30px;
-	padding-top: 30px;
+	padding-top: 100px;
 	position: relative;
 	z-index: 15;
 }
 .block-title {
 	color: $dark-gray;
 	font-weight: 600;
-	padding: 30px 0;
+	padding: 10px 0;
 	text-align: center;
 	text-transform: uppercase;
+}
+.list-item-title {
+	margin-bottom: 20px;
+	position: relative;
+	&:before {
+		border: 1px solid $dark-gray;
+		content: " ";
+		position:absolute;
+		top: 40px;
+		width: 40px;
+		@media(max-width:767px) {
+			top: 30px;
+		}
+	}
+}
+.banner {
+	&.medium {
+		.banner-wrapper { position: fixed; }
+	}
 }
 
 

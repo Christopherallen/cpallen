@@ -12,13 +12,12 @@
 		     ?>
 		    <div class="large-6 columns">
 		    	<?php $hex = get_post_meta( get_the_ID(), 'cpa_post_class', true ); ?>
-		    	<a href="">
-			    	<div class="list-item work" <?php if( ! empty( $hex ) ) { ?>style="background: #<?php echo $hex; ?>"<?php } ?>>
-			    		<?php if ( has_post_thumbnail() ) { 
-			            	the_post_thumbnail('featured');
-			           	} ?>
+		    	<a href="<?php the_permalink(); ?>">
+			    	<div class="list-item work" <?php if( ! empty( $hex ) ) { ?>style="border-bottom:5px solid #<?php echo $hex; ?>"<?php } ?>>
+			    		<?php $work_image = get_field('secondary_image') ;?>
+			    		<img src="<?php echo $work_image['sizes']['work']; ?>" alt="<?php echo $work_image['alt']; ?>" class="work-image" />
 			           	<div class="media-body">
-					    	<h2><?php the_title(); ?></h2>
+					    	<h3 class="list-item-title"><?php the_title(); ?></h3>
 					     	<p><?php $content = get_the_content(); echo mb_strimwidth($content, 0, 150, '...');?></p>
 					    </div>
 			     	</div>

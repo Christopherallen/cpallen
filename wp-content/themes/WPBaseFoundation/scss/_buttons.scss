@@ -1,8 +1,5 @@
 @import "compass/css3";
 .button {
-	background: transparent;
-	border: 3px solid $dark-gray;
-	color: $dark-gray;
 	font-family: "proxima-nova",sans-serif;
 	font-size: 1.4em;	
 	font-weight: 600;
@@ -11,7 +8,31 @@
 	&.large {
 		padding: 15px 70px;
 	}
-	&:hover {
-		background: $dark-gray;
+	&.primary {
+		background: transparent;
+		border: 2px solid $dark-gray;
+		color: $dark-gray;
+		font-weight: 300;
+		&:hover {
+			background: $dark-gray;
+			color: #fff;
+		}
+	}
+	&.secondary {
+		background: #fff;
+		color: $primary-blue;
+		@include box-shadow(0 0 1px #999);
+		&:hover { 
+			background: #eee;
+			color: $primary-blue;
+		}
+	}
+	&.tertiary {
+		background-color: $primary-blue;
+		border-bottom: 2px solid darken($primary-blue, 10%);
+		color: #fff;
+		&:hover {
+			background-color: darken($primary-blue, 10%);
+		}
 	}
 }
