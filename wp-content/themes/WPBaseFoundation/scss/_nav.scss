@@ -1,16 +1,21 @@
 .header {
 	border-bottom: 1px solid transparent;
+	border-top: 5px solid transparent;
 	padding: 15px;
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	z-index: 50;
 	@include transition-duration(.3s);
 	@media(max-width:767px) {
 		background: #fff;
+		border-bottom: 1px solid #eee;
+		border-top: 5px solid darken($primary-blue, 15%);
 	}
-	&.visible, &.nav-open, &:hover {
-		background: #fff;
-		border-bottom: 1px solid #ccc;
+	&.visible, &.nav-open {
+		//background: #fff;
+		//border-bottom: 1px solid #ccc;
+		//border-top: 5px solid darken($primary-blue, 15%);
+		//position: fixed;
 		@include transition-duration(.3s);
 	}
 	.logo {
@@ -45,7 +50,7 @@
 			background: $dark-gray;
 			display: none;
 			left: 0;
-			padding: 20px;
+			padding: 15px;
 			position: absolute;
 			right: 0;
 			top: 70px;
@@ -71,20 +76,23 @@
 				}
 			}
 			.current_page_item {
+				padding-top: 30px;
+				@media(min-width:768px) {
+					border-top: 10px solid darken($primary-blue, 25%);
+				}
 				a {
-					border-bottom:3px solid darken($primary-blue, 15%);
 					color: darken($primary-blue, 15%);
+					padding: 33px 20px 0 20px
 				}
 			}
 			a {
 				border-bottom: 3px solid transparent;
 				color: $dark-gray;
 				font-size: 1.1em;
-				font-weight: 600;
+				font-weight: 800;
 				padding-bottom: 15px;
 				text-transform: uppercase;
 				&:hover {
-					border-bottom:3px solid darken($primary-blue, 15%);
 					color: darken($primary-blue, 15%);
 				}
 			}
@@ -100,6 +108,19 @@
 	}
 }
 
+//Janky Work aroud for custom post types active
+//Look for alternative ways
+.single-project .header .nav .menu .menu-item-117,
+ .post-type-archive-project .header .nav .menu .menu-item-117{
+	padding-top: 30px;
+	@media(min-width:768px) {
+		border-top: 10px solid darken($primary-blue, 25%);
+	}
+	a {
+		color: darken($primary-blue, 15%);
+		padding: 33px 20px 0 20px;
+	}
+}
 // rendition of Chris Wrights pen http://codepen.io/chriswrightdesign/pen/fAayG
 .svg-menu-toggle {
 	.bar {

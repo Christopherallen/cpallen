@@ -13,9 +13,20 @@
 		border: 2px solid $dark-gray;
 		color: $dark-gray;
 		font-weight: 300;
+		@extend .icon-arrow-right3;
+		@include transition(.3s);
+		.icon-arrow-right3 {
+			left: 10px;
+			position: relative;
+			top: 4px;
+			@include transition(.1s);
+		}
 		&:hover {
-			background: $dark-gray;
-			color: #fff;
+			border-color: darken($primary-blue, 15%);
+			text-decoration: none;
+			.icon-arrow-right3 {
+				left: 20px;
+			}
 		}
 	}
 	&.secondary {
@@ -25,6 +36,7 @@
 		&:hover { 
 			background: #eee;
 			color: $primary-blue;
+			text-decoration: none;
 		}
 	}
 	&.tertiary {
@@ -33,6 +45,8 @@
 		color: #fff;
 		&:hover {
 			background-color: darken($primary-blue, 10%);
+			color: #fff;
+			text-decoration: none;
 		}
 	}
 }

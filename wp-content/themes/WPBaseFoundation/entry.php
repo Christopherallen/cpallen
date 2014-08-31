@@ -1,6 +1,5 @@
 <div class="row">
   <div class="front-content">
-    <h2 class="title">Entrys</h2>
     <?php
      $postslist = get_posts('numberposts=3&order=DESC&orderby=date');
      foreach ($postslist as $post) :

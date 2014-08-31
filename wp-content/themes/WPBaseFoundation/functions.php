@@ -4,16 +4,20 @@
 //Enquing all Scripts here, Stylesheets, Foundation, Mean-Menu. You can place all jQuery in scripts.js or enque your own file.
 
 function require_scripts() {  
-    wp_enqueue_style( 'stylesheet', get_template_directory_uri() . '/stylesheets/app.css', true ); 
+    wp_enqueue_style( 'stylesheet', get_template_directory_uri() . '/stylesheets/app.css', true );
+    wp_enqueue_style( 'icon-font', get_template_directory_uri() . '/fonts/icons-stylesheet.css', true ); 
     wp_register_script('jquery', get_template_directory_uri() . '/javascripts/vendor/jquery.js', true ); 
-    wp_register_script('jquery2', get_template_directory_uri() . '/javascripts/vendor/jquery.js', true ); 
+    wp_register_script('jquery2', get_template_directory_uri() . '/javascripts/vendor/jquery.js', true );
+    wp_register_script('cycle2', get_template_directory_uri() . '/javascripts/vendor/cycle2.min.js', true ); 
     wp_register_script('modernizr', get_template_directory_uri() . '/javascripts/vendor/modernizr.js', true );   
     wp_register_script('foundation', get_template_directory_uri() . '/javascripts/foundation/foundation.min.js', true ); 
     wp_register_script('mean-menu', get_template_directory_uri() . '/javascripts/mean-menu/jquery.meanmenu.2.0.min.js', true );
     wp_register_script('scripts', get_template_directory_uri() . '/javascripts/scripts.js', true );
     wp_enqueue_script( 'stylesheet' );  
+    wp_enqueue_script( 'icon-font' ); 
     wp_enqueue_script( 'jquery' ); 
     wp_enqueue_script( 'jquery2' ); 
+    wp_enqueue_script( 'cycle2' ); 
     wp_enqueue_script( 'modernizr' );   
     wp_enqueue_script( 'foundation' );
     wp_enqueue_script( 'mean-menu' );
@@ -80,9 +84,44 @@ add_theme_support( 'post-thumbnails' );
 //Adding Custom Image Sizes. Uncomment code to use.
 
 //add_image_size('featured', 1024, 350 , true);
-add_image_size('work', 900, 300, crop );
+add_image_size('work', 900, 600, crop );
+add_image_size('work-2', 500, 300, crop );
+add_image_size('slider-work', 800, 604, crop );
 
+// Class for pagination buttons - chris
+add_filter('next_post_link', 'post_link_attributes');
+add_filter('previous_post_link', 'post_link_attributes');
+ 
+function post_link_attributes($output) {
+    $code = 'class="button primary"';
+    return str_replace('<a href=', '<a '.$code.' href=', $output);
+}
 
+function my_page_css_class( $css_class, $page ) {
+    global $post;
+    if ( $post->ID == $page->ID ) {
+        $css_class[] = 'current_page_item';
+    }
+    return $css_class;
+}
+add_filter( 'page_css_class', 'my_page_css_class', 10, 2 );
+
+class Walker_CPT extends Walker_Page {
+    function start_el($output, $page, $depth, $args, $current_page) {
+        global $post;
+ 
+        // The $current_page variable doesn't get set if we're not
+        //   on a standard page, so we'll set it here before 
+        //   generating the list.
+        // Check is_singular() first so it doesn't give false
+        //   positives on archive pages.
+        if (is_singular()) $current_page = $post->ID;
+ 
+        // Run the original start_el() function after setting the
+        //   $current_page variable
+        parent::start_el($output, $page, $depth, $args, $current_page);
+    }
+}
 
 /***************************************************** 
 //Custom Exceprt Length. Uncomment code to use.

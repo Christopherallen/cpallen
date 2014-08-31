@@ -1,10 +1,5 @@
-.banner {
-	@include background-image(linear-gradient($light-blue, darken($light-blue, 10%)));
-	//background-color: darken($light-blue, 10%);
-	//background-image: url(../img/banner-texture.png);
-	&.small {
-		height: 250px;
-	}	
+.banner.large {
+	background-image: url(../img/header-bg.png);
 	overflow: hidden;
 	position: relative;
 	@media(max-width:767px) {
@@ -23,36 +18,54 @@
 		display: table;
 		height: 100%;
 		width: 100%;
+		@include grid-row();
 	}
 	.banner-body {
 		display: table-cell;
 		opacity: 1;
 		padding-top: 20px;
 		position: relative;
-		text-align: center;
 		top: 0px;
 		vertical-align: middle;
 		z-index: 5;
 		//position: fixed;
 		//top: 100px;
 		//width: 100%;
+		.button {
+			@media(max-width:767px) {
+				display: block;
+				padding: 15px;
+			}
+		}
 		.banner-body-text {
-			color: #fff;
-			font-size: 4em;
+			color: $dark-gray;
+			font-size: 3em;
 			font-weight: 700;
-			line-height: .9em;
-			margin: 0 auto 20px auto;
-			max-width: 750px;
+			line-height: 1em;
+			margin: 0 auto 40px auto;
+			max-width: 960px;
 			position: relative;
 			text-transform: uppercase;
-			@include text-shadow(0 1px 2px #999);
 			@include transition(.3s);
-			-webkit-animation: text-opac .3s ease-out;
-			-moz-animation: text-opac .3s 1 ease-out;
-			-o-animation: text-opac .3s 1 ease-out;
+			@include grid-column(12);
+			a { 
+				color: $dark-gray;
+				padding:3px;
+				&:hover { 
+					background: darken($primary-blue, 15%);
+					color: #fff;
+				}
+			}
+			//-webkit-animation: text-opac .3s ease-out;
+			//-moz-animation: text-opac .3s 1 ease-out;
+			//-o-animation: text-opac .3s 1 ease-out;
 			@media(max-width:767px) {
 				font-size: 2em;
 				line-height: 1.2em;
+				text-align: center;
+			}
+			@media(max-width:550px) {
+				font-size: 1.2em;
 			}
 		}
 		.banner-body-text-small {
@@ -62,47 +75,49 @@
 			font-weight: 300;
 			text-transform: none;
 			text-shadow: none;
+			@media(max-width:767px) {
+				font-size: 24px;
+			}
+			@media(max-width:550px) {
+				font-size: 18px;
+			}
+		}
+		.banner-body-button {
+			margin: 0 auto;
+			max-width: 960px;
+			@include grid-column(12);
 		}
 	 	.button {
-			-webkit-animation: intro .3s 1 ease-out;
-			-moz-animation: intro .3s 1 ease-out;
-			-o-animation: intro .3s 1 ease-out;
+			//-webkit-animation: intro .3s 1 ease-out;
+			//-moz-animation: intro .3s 1 ease-out;
+			//-o-animation: intro .3s 1 ease-out;
 		}
 	}
-	.banner-mountains {
-		bottom: 0;
+	.banner-scroll {
+		bottom: 20px;
+		right: 50px;
 		position: absolute;
-		height: 120px;
-		left: 0;
-		width: 100%;
-		z-index: 10;
-		@media(max-width:767px) {
-			height: 85px;
+		.scroll {
+			color: $dark-gray;
+			font-size: 12px;
+			opacity: .6;
+			@include transition(.1s);
+			&:hover {
+				opacity: 1;
+				.icon-arrow-down3{
+					top: 10px;
+					@include transition(.1s);
+				}
+			}
 		}
-	}
-	.banner-clouds, .banner-clouds-2 {
-		bottom: -40px;
-	  	position: absolute;
-	  	height:125px;
-	}
-	.banner-clouds {
-		opacity: .7;
-	  	width:125px;
-		-webkit-animation: moveclouds 100s infinite;
-		-moz-animation: moveclouds 100s infinite;
-		-o-animation: moveclouds 100s infinite;
-		z-index: 1;
-		left: 50%;
-	}
-	.banner-clouds-2 {
-		opacity: .5;
-		width: 160px;
-		z-index:11;
-		@include transform(skewX(35deg));
-		-webkit-animation: moveclouds 140s infinite;
-		-moz-animation: moveclouds 140s infinite;
-		-o-animation: moveclouds 140s infinite;
-		left: 40%;
+		.icon-arrow-down3 {
+			color: darken($primary-blue, 15%);
+			font-size: 28px;
+			padding-left:5px;
+			position: relative;
+			top: 7px;
+			@include transition(.3s);
+		}
 	}
 }
 .home {
@@ -112,10 +127,10 @@
 }
 .list-item {
 	&.featured {
-		background-color: darken($light-gray, 25%);
 		margin-bottom: 50px;
-		overflow:hidden;
 		padding: 30px 0;
+		@include grid-row();
+		&:first-child { border-bottom: 1px solid #ccc; }
 		@media(max-width:980px) {
 			padding-left: 15px;
 			padding-right: 15px;
@@ -130,9 +145,6 @@
 			}
 		}
 		.media-object {
-			height: 100px;
-			position: relative;
-			top: 100px;
 			@media(min-width:980px) {
 				@include grid-column(6);
 			}
@@ -160,12 +172,18 @@
 		}
 		.media-body {
 			@media(min-width:980px) {
+				margin-top: 60px;
+				opacity: 0;
+				position: relative;
+				top: 100px;
 				@include grid-column(6);	
+			}
+			@media(max-width:979px) {
+				opacity: 1;
 			}
 		}
 		.list-item-title {
 			margin-bottom: 20px;
-			a { color: #fff; }
 		}
 	}
 }

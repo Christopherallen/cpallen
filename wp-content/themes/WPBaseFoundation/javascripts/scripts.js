@@ -51,7 +51,7 @@ $(function() {
 	window.quinticEase = ease;
 		
 	$([document, window]).scroll(function() {
-		if ($(window).scrollTop() >= 20) {
+		if ($(window).scrollTop() >= 250) {
 			$('.header').addClass('visible');
 		} else {
 			$('.header').removeClass('visible');
@@ -74,6 +74,19 @@ $(function() {
 			});
 			return false;
 		});
+		// Fade up homepage
+		 $(window).scroll(function () {
+	        var bottom_of_window = $(window).scrollTop() + $(window).height();
+	        $('.featured').each(function (i) {
+	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+	            if (bottom_of_window > bottom_of_object) {
+	                $(this).find( '.media-body' ).animate({
+	                    'top': '0', 
+	                    'opacity': '1',             
+	                }, 500);
+	            }
+	        });       
+	    });
 		
 	}
 		
@@ -92,9 +105,7 @@ $(function() {
 				$(window).scrollTop(ease(pct, sp, vc, 1));
 			});
 			return false;
-		});
-		
-		
+		});		
 	}
 
 			
@@ -113,19 +124,28 @@ $(function() {
 	mm2.addListener(mf1, true);
 });
 
-// Featured Fade up
-if (document.documentElement.clientWidth > 979) {
-	$(document).ready(function () {
-    $(window).scroll(function () {
-	        var bottom_of_window = $(window).scrollTop() + $(window).height();
-	        $('.featured').each(function (i) {
-	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-	            if (bottom_of_window > bottom_of_object) {
-	                $(this).find( '.media-object' ).animate({
-	                    'top': '0',              
-	                }, 500);
-	            }
-	        });       
-	    });
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+$(function() {
+	$( ".nav-mobile-toggle").click(function() {
+		$( ".nav" ).slideToggle( 300 );
+		$( ".nav" ).toggleClass( "nav-open" );
+		$( ".header" ).toggleClass( "nav-open" );
 	});
-}
+	
+	$( ".project-inquiry-container" ).click(function() {
+	  $( '.footer-upper-contact' ).slideToggle( "fast" );
+	});
+});

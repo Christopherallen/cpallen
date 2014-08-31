@@ -1,6 +1,7 @@
 .footer {
 	background-color: $darker-gray;
 	color: $dark-gray;
+	overflow: hidden;
 	padding-top: 20px;
 	position: relative;
 	text-align: center;
@@ -11,35 +12,63 @@
 		}
 		li { 
 			display: inline;
-			margin-right:15px;
 			a {
+				color: $dark-gray;
+				font-size: 48px;
 				&:hover {
-					.footer-social-link {
-						 fill: darken($primary-blue, 15%); 
-					}
+					color: darken($primary-blue, 15%); 	
 				}
 			}
 		}
 	}
 	.footer-copy p{
-		font-size: .7em;
+		font-size: .8em;
 		margin-bottom: 0;
 		padding-bottom: 20px;
+		a {
+			color: $dark-gray;
+			&:hover {
+				color: darken($primary-blue, 15%);
+			}
+		}
 	}
 }
 .footer-upper {
-	background-color: $dark-gray;
+	background-color: darken($light-gray, 10%);
+	background-image: url(../img/header-bg.png);
+	overflow: hidden;
+	position: relative;
 	.footer-upper-action {
-		color: #aaa;
+		color: #666;
+		font-weight: 300;
 		padding: 20px 0;
 		text-align: center;
+		.project-inquiry-container { 
+			color: #fff;
+			&:hover {
+				color: $dark-gray;
+				cursor: pointer;
+				text-decoration: underline;
+			}
+		}
+	}
+	.project-inquiry-container {
+		text-align: right; 
+		display:inline-block;
+		@include transition(.3s);
+		.icon-cross {
+			position:relative;
+			top: 2px;
+		}
+		&:hover {
+			color: darken($primary-blue, 15%);
+			cursor: pointer;
+		}
 	}
 	.footer-upper-contact {
 		display: none;
-		height: 300px;
 		&.open {
 			display: block;
 		}
 	}
 }
-

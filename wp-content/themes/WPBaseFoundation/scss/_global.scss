@@ -17,19 +17,31 @@ h2, h3, h4, h5, h6 {
 }
 p { color: $dark-gray; }
 a {
-	color: darken($primary-blue, 10%);
+	color: darken($primary-blue, 15%);
 	@include transition-duration(.3s);
 	&:hover {
-		color: $primary-blue;
+		color: $dark-gray;
 		@include transition-duration(.3s);
 	}
 }
+.hide-text {
+	position: absolute;
+	text-indent: -999em;
+}
+[class*="column"] + [class*="column"]:last-child {
+ float: left;
+}
 .content {
+	a {
+		&:hover { 
+			color: $dark-gray;
+		}
+	}
 	background-color: #fff;
 	min-height: 300px;
 	overflow: hidden;
 	padding-bottom: 30px;
-	padding-top: 100px;
+	padding-top: 30px;
 	position: relative;
 	z-index: 15;
 }
@@ -43,6 +55,10 @@ a {
 .list-item-title {
 	margin-bottom: 20px;
 	position: relative;
+	&:hover, a:hover {
+		color: $dark-gray;
+		text-decoration: none;
+	}
 	&:before {
 		border: 1px solid $dark-gray;
 		content: " ";
@@ -55,9 +71,77 @@ a {
 	}
 }
 .banner {
+	//background-size: cover;
+	//background-repeat: no-repeat;
+	background-color: $light-gray;
+	border-top: 10px solid darken($primary-blue, 15%);
+	.banner-body {
+		-webkit-animation: up 1s 1;
+		-moz-animation: up 1s 1;
+		-o-animation: up 1s 1;
+		transition-delay: 3s;
+		-webkit-transition-delay: 3s;
+	}
+	.banner-body-title {
+		@include grid-column(12);
+	}
 	&.medium {
-		.banner-wrapper { position: fixed; }
+		background-image: none;
+		height: 600px;
+		@media(max-width:767px) {
+			height: 350px;
+		}
+		.banner-wrapper {
+			background-image: url(../img/header-bg.png);
+			height: 600px; 
+			padding-top: 60px;
+			position: fixed;
+			width: 100%;
+			text-align: center;
+		}
+		.banner-body {
+			.slider-img { 
+				max-width: 550px;
+				width: 100%;
+			}
+		}
+	}
+	&.small {
+		height: 250px;
+		.banner-wrapper { 
+			background-image: url(../img/header-bg.png);
+			display: table;
+			height: 250px;
+			position: fixed;
+			width: 100%;
+		}
+		.banner-body {
+			display:table-cell;
+			padding-bottom: 20px;
+			vertical-align: bottom;
+		}
+		.banner-body-text {
+			@media(max-width:767px) {
+				text-align: center;
+			}
+			.icon-tools, .icon-mail{
+				font-size: 32px;
+				margin-right: 20px;
+			}
+			.banner-body-title {
+				color: $dark-gray;
+				font-size: 3.5em;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+		}
 	}
 }
-
+.menu-site-map-container {
+	.menu-item-object-page {
+		font-size: 2em;
+		font-weight: 600;
+		@include grid-column(4);
+	}
+}
 

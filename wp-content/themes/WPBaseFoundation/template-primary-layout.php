@@ -4,27 +4,37 @@
  get_header(); ?>
 
  <div class="content">
- 	<div class="row">
- 		
+ 		<?php if (is_page('Work')) { ?>
  		<?php
-		     $query = new WP_Query(array('post_type'=>'project', 'taxonomy'=>'project_category', 'posts_per_page' => 8, 'order' => 'asc'));
+		     $query = new WP_Query(array('post_type'=>'project', 'taxonomy'=>'project_category', 'posts_per_page' => 8, 'orderby'=>'menu_order', 'order'=>'ASC'));
 		     while ($query->have_posts()) : $query->the_post();
 		     ?>
-		    <div class="large-6 columns">
-		    	<?php $hex = get_post_meta( get_the_ID(), 'cpa_post_class', true ); ?>
+		    <div class="work-wrapper">
 		    	<a href="<?php the_permalink(); ?>">
-			    	<div class="list-item work" <?php if( ! empty( $hex ) ) { ?>style="border-bottom:5px solid #<?php echo $hex; ?>"<?php } ?>>
-			    		<?php $work_image = get_field('secondary_image') ;?>
-			    		<img src="<?php echo $work_image['sizes']['work']; ?>" alt="<?php echo $work_image['alt']; ?>" class="work-image" />
-			           	<div class="media-body">
-					    	<h3 class="list-item-title"><?php the_title(); ?></h3>
-					     	<p><?php $content = get_the_content(); echo mb_strimwidth($content, 0, 150, '...');?></p>
-					    </div>
+			    	<div class="list-item work">
+			    		<?php if ( has_post_thumbnail() ) { 
+		            		the_post_thumbnail('featured');
+		           		} ?>
+			    		<h3 class="list-item-title"><?php the_title(); ?></h3>
+			    		<div class="hover-content">
+			     			<h3 class="hover-content-title">View Case Study</h3>
+			     		</div>
 			     	</div>
 		     	</a>	
 		    </div>
 		<?php endwhile; wp_reset_query(); ?>
- 	</div>
+		<?php } elseif (is_page('Contact')) { ?>
+			<div class="row">
+				<div class="contact">
+					<div class="contact-info">
+						<?php if (have_posts()) : while (have_posts()) : the_post();?>
+							<?php the_content(); ?>
+						<?php endwhile; endif; ?>
+					</div>	
+					<?php echo do_shortcode('[contact-form-7 id="65" title="Contact form 1"]'); ?>
+				</div>
+			</div>	
+		<?php } ?>
  </div>
 
  <?php get_footer(); ?>

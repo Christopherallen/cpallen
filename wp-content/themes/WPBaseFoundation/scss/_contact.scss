@@ -1,0 +1,63 @@
+.contact, .project-inquiry {
+	.contact-text, .contact-textarea  {
+		font-weight: 300;
+		margin: 0;
+		text-transform: uppercase;
+		input, textarea {
+			@include transition(.3s);
+			@include box-shadow(none);
+		}
+	}
+	.contact-text {
+		@include grid-column(6);
+		@media(max-width:550px) {
+			@include grid-column(12);
+		}
+		input { height: 50px; }
+	}
+	.wpcf7-response-output { border: none; }
+	.wpcf7-validation-errors, .ajax-loader { display: none !important; }
+	span.wpcf7-not-valid-tip {
+		bottom: 15px;
+		color: #F24A4F;
+		font-size: .6em;
+		position: relative;
+		text-transform: initial;
+	}
+	.wpcf7-response-output {
+		color: #fff;
+		background-color: $primary-blue;
+		bottom: 0;
+		padding: 10px;
+		position: absolute;
+		@include border-radius(5px);
+	}
+	.contact-textarea, .contact-submit {
+		@include grid-column(12);
+	}
+	.wpcf7-submit {
+		@extend .button;
+		@extend .tertiary;
+	}
+}
+.contact {
+	@media(min-width:767px) {
+		@include grid-column($columns: 9, $offset: 1.5);
+	}
+	.contact-text, .contact-textarea  {
+		input, textarea {
+			border: 1px solid #ddd;
+			&:focus {
+				background-color: $light-gray;
+			}
+		}
+	}
+	.contact-info {
+		@include grid-column(12);
+	}
+}
+.project-inquiry {
+	@include grid-column(12);
+	padding-bottom: 30px;
+
+}

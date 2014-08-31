@@ -2,20 +2,25 @@
 
 <div class="content">
     <div class="row">
-    
-        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <div class="large-9 columns">
+            <?php 
+            if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+                the_post_thumbnail('featured');
+            }             
+            ?>
 
-            <h3 class="list-item-title" itemprop="headline"><?php the_title(); ?></h3>
+            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+            <h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
             <?php the_content(); ?>
-            <?php if( get_field('project_url') ) { ?><a href="<?php the_field('project_url') ?>" target="_blank"><?php the_field('project_url') ?></a><?php } ?>
 
-        <?php endwhile; endif; ?>       
-    </div>
-</div>  
-
-<!--div class="row">
-    <?php get_sidebar(); ?>
-</div-->
+            <?php endwhile; endif; ?>
+        </div>
+         <div class="large-3 columns">
+            <?php get_sidebar(); ?>
+         </div>
+    </div>  
+</div>
 
 <?php get_footer(); ?> 
